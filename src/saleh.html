@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="res">
+
+    </div>    
+
+    <script>
+
+        let names = ["Saleh", "Ali", "Aslam", "Chander", "Bheesham"];
+
+        let UL = document.createElement("ul");
+        
+        UL.style.backgroundColor="red";
+        UL.style.listStyle="none";
+        UL.style.display="flex";
+        UL.style.padding="10px";
+
+        names.map((name,i) => {
+            let LI = document.createElement("li");  
+            LI.innerHTML = `${name.toUpperCase()}`;
+            LI.style.color="white";
+            LI.style.marginRight="20px";
+            UL.append(LI); ;
+        });
+
+       let bd  = document.getElementById("res"); 
+       bd.append(UL);
+       let btn =document.createElement("button");
+       let p =document.createElement("p");
+
+
+       btn.innerHTML = "Get Clipboard Text";  
+        btn.onclick = () => {
+            window.navigator.clipboard.readText().then(data => {
+                p.innerHTML = `Clipboard Text: ${data}`;  // Update the paragraph with clipboard data
+            }).catch(err => {
+                p.innerHTML = "Failed to read clipboard content.";  // Handle error
+            });
+        };     
+
+        btn.append(p);
+        bd.append(btn);
+        
+
+    </script>
+
+
+</body>
+</html>
